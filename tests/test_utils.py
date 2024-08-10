@@ -6,7 +6,7 @@ data_path = os.path.join(os.path.dirname(__file__), "..", "data", "operations.js
 
 
 def test_get_json_operations() -> None:
-    """ test """
+    """test"""
     assert get_json_operations("") == []
     assert get_json_operations("[]") == []
     assert get_json_operations(data_path) == [
