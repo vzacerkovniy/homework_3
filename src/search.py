@@ -1,11 +1,12 @@
 from collections import Counter
+import re
 
 
 def search_by_pattern(transaction_list, key_word):
     """Функция принимает список словарей и возвращает список только тех словарей, в которых найдено ключевое слово"""
     output_list = []
     for transaction in transaction_list:
-        if key_word in transaction["description"]:
+        if re.search(key_word, transaction["description"]):
             output_list.append(transaction)
     return output_list
 
