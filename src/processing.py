@@ -1,16 +1,12 @@
-def filter_by_state(input_list: list, state: str = "EXECUTED") -> list:
+def filter_by_state(input_list: list, status: str = "CANCELED") -> list:
     """Функция фильтрации списка словарей по значению ключа"""
-    executed = []
-    canceled = []
+    current_state = []
     for operation in input_list:
-        if operation["state"] == "CANCELED":
-            canceled.append(operation)
+        if operation["state"] == status:
+            current_state.append(operation)
         else:
-            executed.append(operation)
-    if state == "CANCELED":
-        return canceled
-    else:
-        return executed
+            pass
+    return current_state
 
 
 def sort_by_date(input_list: list, ascending: bool = True) -> list:
@@ -21,3 +17,14 @@ def sort_by_date(input_list: list, ascending: bool = True) -> list:
     else:
         output_list = sorted(input_list, key=lambda dic: dic["date"], reverse=True)
         return output_list
+
+
+def filter_by_currency(input_list: list, currency: str) -> list:
+    """Функция фильтрации списка словарей по валюте"""
+    current_currency = []
+    for operation in input_list:
+        if operation["currency_code"] == currency:
+            current_currency.append(operation)
+        else:
+            pass
+    return current_currency
